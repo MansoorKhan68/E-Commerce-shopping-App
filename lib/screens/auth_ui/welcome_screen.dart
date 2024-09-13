@@ -1,3 +1,4 @@
+import 'package:complain_management_system/controllers/google_sign_in_controller.dart';
 import 'package:complain_management_system/utills/app_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
+  final GoogleSignInController googleSignInController = Get.put(GoogleSignInController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +54,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   color: AppConstant.appSecondaryColor,
                   borderRadius: BorderRadius.circular(20)),
               child: TextButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  googleSignInController.signInWithGoogle();
+                },
                 label: const Text(
                   // button text
                   "Sign In with google",
